@@ -1,0 +1,52 @@
+{
+  "name": "clipnotespro-desktop",
+  "version": "1.0.0",
+  "description": "ClipNotesPro Desktop Application",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder",
+    "postinstall": "electron-builder install-app-deps"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^28.0.0",
+    "electron-builder": "^24.9.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/YOUR_GITHUB_USERNAME/ClipNotesPro-Desktop-App.git"
+  },
+  "build": {
+    "appId": "com.clipnotespro.desktop",
+    "productName": "ClipNotesPro",
+    "directories": {
+      "output": "dist"
+    },
+    "win": {
+      "target": "nsis",
+      "icon": "Image.png"
+    },
+    "mac": {
+      "target": "dmg",
+      "icon": "Image.png"
+    },
+    "linux": {
+      "target": "AppImage",
+      "icon": "Image.png"
+    },
+    "publish": [
+      {
+        "provider": "github",
+        "owner": "YOUR_GITHUB_USERNAME",
+        "repo": "ClipNotesPro-Desktop-App"
+      }
+    ]
+  },
+  "dependencies": {
+    "electron-log": "^5.4.1",
+    "electron-updater": "^6.6.2"
+  }
+}
