@@ -5,6 +5,10 @@ on:
     tags:
       - 'v*'
 
+permissions:
+  contents: write
+  issues: write
+
 jobs:
   build:
     runs-on: windows-latest
@@ -22,14 +26,24 @@ jobs:
         run: npm ci
 
       - name: Build & package
+        # We distribute unsigned, so disable auto-discovery of any cert in the
+        # runner's store (otherwise electron-builder tries to sign and fails).
         # If you later buy a code-signing cert, add CSC_LINK (path/url to .pfx)
         # and CSC_KEY_PASSWORD as GitHub Actions secrets and it signs automatically.
         env:
+          CSC_IDENTITY_AUTO_DISCOVERY: false
           CSC_LINK: ${{ secrets.CSC_LINK }}
           CSC_KEY_PASSWORD: ${{ secrets.CSC_KEY_PASSWORD }}
-        run: npm run dist
+        run: npm run dist 2>&1 | Tee-Object -FilePath build_error.log
+
+      - name: Surface build error
+        if: failure()
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: gh issue create --title "CI build failed" --body-file build_error.log --repo $env:GITHUB_REPOSITORY
 
       - name: Create GitHub Release
+        if: success()
         uses: softprops/action-gh-release@v2
         with:
           files: |
