@@ -34,7 +34,7 @@ jobs:
           CSC_IDENTITY_AUTO_DISCOVERY: false
           CSC_LINK: ${{ secrets.CSC_LINK }}
           CSC_KEY_PASSWORD: ${{ secrets.CSC_KEY_PASSWORD }}
-        run: npm run dist 2>&1 | Tee-Object -FilePath build_error.log
+        run: npm run dist -- --publish=never 2>&1 | Tee-Object -FilePath build_error.log
 
       - name: Surface build error
         if: failure()
