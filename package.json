@@ -22,7 +22,7 @@
   "build": {
     "appId": "com.clipnotespro.desktop",
     "productName": "ClipNotesPro",
-    "artifactName": "${productName}-Setup-${version}.${ext}",
+    "artifactName": "${productName}-Setup.${ext}",
     "directories": {
       "output": "dist"
     },
