@@ -1,2 +1,9 @@
 # Auto detect text files and perform LF normalization
 * text=auto
+
+# Binary assets must not be line-ending normalized or they get corrupted
+*.ico binary
+*.png binary
+*.exe binary
+*.blockmap binary
+
