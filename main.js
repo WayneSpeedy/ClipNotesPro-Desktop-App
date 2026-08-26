@@ -20,7 +20,7 @@ function createWindow() {
       contextIsolation: true,
       preload: path.join(__dirname, 'preload.js')
     },
-    icon: path.join(__dirname, 'build/icon.png')
+    icon: path.join(__dirname, 'build/icon.ico')
   });
 
   // Load the ClipNotesPro web app
@@ -70,7 +70,7 @@ function showUpdateNotification() {
     },
     parent: mainWindow,
     modal: true,
-    icon: path.join(__dirname, 'build/icon.png')
+    icon: path.join(__dirname, 'build/icon.ico')
   });
 
   updateWindow.loadFile('update.html');

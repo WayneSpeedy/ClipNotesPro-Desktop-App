@@ -27,7 +27,15 @@
     },
     "win": {
       "target": "nsis",
-      "icon": "Image.png"
+      "icon": "build/icon.ico"
+    },
+    "appx": {
+      "identityName": "REPLACE_WITH_IDENTITY_NAME",
+      "publisher": "CN=REPLACE_WITH_PUBLISHER_ID",
+      "publisherDisplayName": "REPLACE_WITH_DISPLAY_NAME",
+      "displayName": "ClipNotesPro",
+      "backgroundColor": "#FFFFFF",
+      "showNameOnTiles": false
     },
     "mac": {
       "target": "dmg",
