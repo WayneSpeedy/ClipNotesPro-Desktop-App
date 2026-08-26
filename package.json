@@ -1,6 +1,6 @@
 {
   "name": "clipnotespro-desktop",
-  "version": "1.0.0",
+  "version": "1.0.11",
   "description": "ClipNotesPro Desktop Application",
   "main": "main.js",
   "scripts": {
@@ -22,6 +22,7 @@
   "build": {
     "appId": "com.clipnotespro.desktop",
     "productName": "ClipNotesPro",
+    "artifactName": "${productName}-Setup-${version}.${ext}",
     "directories": {
       "output": "dist"
     },
