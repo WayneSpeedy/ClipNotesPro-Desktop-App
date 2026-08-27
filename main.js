@@ -26,6 +26,13 @@ function createWindow() {
   // Load the ClipNotesPro web app
   mainWindow.loadURL('https://clipnotespro.net');
 
+  // Keep the window title fixed to "ClipNotesPro" (ignore the page's own title)
+  mainWindow.setTitle('ClipNotesPro');
+  mainWindow.webContents.on('page-title-updated', (event) => {
+    event.preventDefault();
+    mainWindow.setTitle('ClipNotesPro');
+  });
+
   // Inject CSS to hide scrollbars
   mainWindow.webContents.on('did-finish-load', () => {
     mainWindow.webContents.insertCSS('::-webkit-scrollbar { display: none; }');
